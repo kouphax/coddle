@@ -86,27 +86,29 @@ export function App() {
     <div>
       <h1>Coddle</h1>
       <h2>Code Breaker</h2>
-      {
-        history.map((row, rowIndex) => {
-          return <div key={`row-${rowIndex}`}>
-            {row.map((cell, cellIndex) => {
-              return <span key={`row-${rowIndex}-${cellIndex}`} className={`cell ${position(cell, cellIndex)}`}>{cell}</span>
-            })}
-          </div>
-        })
-      }
-      <div>
-        { !broken &&
-            [0,1,2,3].map(index => {
-              return <span key={index} className="cell">{current[index] !== undefined ? current[index] : '*'}</span>
-            })
+      <div className="history">
+        {
+          history.map((row, rowIndex) => {
+            return <div key={`row-${rowIndex}`}>
+              {row.map((cell, cellIndex) => {
+                return <span key={`row-${rowIndex}-${cellIndex}`} className={`cell ${position(cell, cellIndex)}`}>{cell}</span>
+              })}
+            </div>
+          })
         }
-        {/*{*/}
-        {/*  !broken && <span>({current.reduce((partial_sum, a) => partial_sum + a, 0)} +"/" +{code.reduce((partial_sum, a) => partial_sum + a, 0)})</span>*/}
-        {/*}*/}
-        { broken &&
-            <h3>Code broken in {history.length} attempts</h3>
-        }
+        <div>
+          { !broken &&
+              [0,1,2,3].map(index => {
+                return <span key={index} className="cell">{current[index] !== undefined ? current[index] : '*'}</span>
+              })
+          }
+          {/*{*/}
+          {/*  !broken && <span>({current.reduce((partial_sum, a) => partial_sum + a, 0)} +"/" +{code.reduce((partial_sum, a) => partial_sum + a, 0)})</span>*/}
+          {/*}*/}
+          { broken &&
+              <h3>Code broken in {history.length} attempts</h3>
+          }
+        </div>
       </div>
     </div>
     <div className="keyboard">

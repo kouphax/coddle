@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 
 const randomDigit = () => Math.floor(Math.random() * 10)
 
@@ -25,7 +25,7 @@ export function App() {
   const [history, setHistory] = useState(today.history)
   const [current, setCurrent] = useState(today.current)
   const [broken, setBroken] = useState(today.broken)
-
+  const divEl = useRef(null);
 
   const position = (cell, index) => {
     if(code.includes(cell)) {
@@ -67,6 +67,7 @@ export function App() {
         setHistory([...history, current])
         setBroken(current.join('') === code.join(''))
         setCurrent([])
+        divEl.current.scrollIntoView({behavior: 'smooth'})
       }
     }
   }
@@ -109,6 +110,12 @@ export function App() {
               <h3>Code broken in {history.length} attempts</h3>
           }
         </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div ref={divEl}></div>
       </div>
     </div>
     <div className="keyboard">

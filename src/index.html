@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title>Coddle: Code Breaker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
@@ -11,10 +13,9 @@
       * {
         font-family: 'Roboto', sans-serif;
       }
-      .app {
-        width: 960px;
+
+      #stage, .app  {
         text-align: center;
-        margin: 1em auto 0;
       }
 
       .cell {
@@ -37,10 +38,24 @@
       .missing {
         background-color: lightgray;
       }
+
+      .keyboard {
+        bottom: 0;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+      }
+
+      .keyboard .cell {
+        margin: 0.5em;
+      }
+
+
     </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="stage"></div>
     <script type="module" src="index.js"></script>
   </body>
 </html>
